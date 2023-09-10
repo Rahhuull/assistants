@@ -1,0 +1,71 @@
+
+<?php
+function checkInternetConnection()
+{
+  $connected = @fsockopen("www.google.com", 80);
+  if ($connected) {
+    fclose($connected);
+    return true; // Internet is available
+  }
+  return false; // Internet is not available
+}
+
+$internetAvailable = checkInternetConnection();
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+td{  background-color: red;
+border: 1px solid red; /* Default border style */
+border-color: red; /* Set the border color */
+	border-radius:0px;
+		background: linear-gradient(to right, black, red 50%, red 50%, black);border: 1px solid black;}
+}
+
+
+</style>
+ <style>
+    body {
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+  </style>
+  <title>Internet Availability</title>
+</head>
+<body >
+<table border='0'width='100%'>
+
+<tr><td colspan='2'align='center'> <font color='white' size='2'>
+<?php
+$current_date = date("d-m-Y"); // Get current date in the format YYYY-MM-DD
+
+echo "Date : " . $current_date;
+?>
+  </td>
+  </tr>
+  <tr height='5'>
+<tr><td align='center'>
+  <?php if ($internetAvailable) : ?>
+<font color='white' size='2'>Internet Status : Yes</font></td><tr>
+  
+  <?php else : ?>
+    <tr><td align='center'>
+	<font color='white' size='2'>Internet Status : No</font></td></tr>
+  <?php endif; ?>
+  
+
+ 
+      <tr height='5'>
+  
+  <tr><td colspan='2'align='center'> <font color='white' size='2'>
+Press Enter to enable Sound
+  </td>
+  </tr>
+  
+</body>
+</html>
+
+
